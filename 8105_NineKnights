@@ -1,0 +1,83 @@
+//Ezekial page
+//8105 Nine Knights Problem
+//DONE
+
+package NineKnights;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String [] args) throws IOException{
+		Scanner scan = new Scanner(System.in);
+		
+		int iterations = scan.nextInt();
+		
+		
+		char temp = ' ';
+		int kcount;
+		//create loop for number of runs for program
+		for(int i = 0; i < iterations+1; i++) {
+			kcount = 0;
+			char [][] board = {{' ',' ',' ',' ',' ',' ',' ',' ',' '},
+					{' ',' ',' ',' ',' ',' ',' ',' ',' '},
+					{' ',' ',' ',' ',' ',' ',' ',' ',' '},
+					{' ',' ',' ',' ',' ',' ',' ',' ',' '},
+					{' ',' ',' ',' ',' ',' ',' ',' ',' '},
+					{' ',' ',' ',' ',' ',' ',' ',' ',' '},
+					{' ',' ',' ',' ',' ',' ',' ',' ',' '},
+					{' ',' ',' ',' ',' ',' ',' ',' ',' '},
+					{' ',' ',' ',' ',' ',' ',' ',' ',' '}};
+			//populate input matrix
+			for(int a = 0; a < 5; a++){
+				String in = scan.next();
+				for(int b = 0; b < 5; b++) {
+					temp = in.charAt(b);
+					board[a + 2][b + 2] = temp;
+					if(temp == 'k') {
+						kcount++;
+					}
+				}//end row fill loop
+			}//end column fill loop
+			System.out.println();
+			
+			//check for valid or non valid characters
+			if(validCheck(board,kcount)) {
+				System.out.println("valid");
+			}else {
+				System.out.println("invalid");
+			}
+		}
+	}
+	
+	static boolean validCheck(char [][] s, int count)throws IOException{
+		//search for k's
+		for(int j = 2; j < 7; j++){
+			for(int k = 2; k < 7; k++) {
+				if(s[j][k] == 'k') {
+					if(s[j + 2][k - 1] == ('k')) {//check up left
+						return false;
+					}else if(s[j + 2][k + 1] == ('k')) {//check up right
+						return false;
+					}else if(s[j - 1][k + 2] == ('k')) {//check right down
+						return false;
+					}else if(s[j + 1][k + 2] == ('k')) {//check right up
+						return false;
+					}else if(s[j + 2][k + 1] == ('k')) {//check down right
+						return false;
+					}else if(s[j + 2][k + 1] == ('k')) {//check down left
+						return false;
+					}else if(s[j + 1][k + 2] == ('k')) {//check left up
+						return false;
+					}else if(s[j - 1][k + 2] == ('k')) {//check left down
+						return false;
+					}else if(count != 9) {
+						return false;
+					}
+				}
+			}
+		}
+		//if run reaches this point return valid
+		return true;
+	}//end validCheck method
+}//end class
