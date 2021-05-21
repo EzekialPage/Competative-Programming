@@ -14,19 +14,21 @@ public class Main {
 		for(int i = 0; i < iterations; i++) {
 			int numPics = scan.nextInt();
 			int startHeight =  scan.nextInt();
-			int width = scan.nextInt();
+			int currentHeight = startHeight;
+			int roomWidth = scan.nextInt();
+			int [][] pictures = new int[4][6];
 			
+			//loop through picture dimensions and store in array
 			for(int p = 0; p < numPics; p++) {
-				
-				
+				for(int d = 0; d < pictures[0].length;d++) {
+					pictures[p][d] = scan.nextInt();
+				}
+				int distToTop = Math.abs(currentHeight - pictures[p][2]);
+				int distToBot = Math.abs(currentHeight - pictures[p][3]);
+				if(false) {
+				} 
 			}
-			
-			
-			
-			
-			
 		}//end iterations
-		
 		scan.close();
 	}//end main
 }//end class
