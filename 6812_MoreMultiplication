@@ -1,0 +1,33 @@
+//Ezekial Page
+//6812 More Multiplication
+//Incomplete
+
+package MoreMultiplication;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int iterations = scan.nextInt();
+		scan.nextLine();
+		
+		//loop for specified number of test cases
+		for(int i = 0; i < iterations; i++) {
+			
+		}//end iterations
+		
+		scan.close();
+	}//end main
+	
+	public String createCell(int a, int b) {
+		String ret = "";
+		String product = Integer.toString(a * b);
+		if(product.length() != 2) {
+			ret =     "|0 /|\n"
+					+ "| / |"
+					+ "|/ " + product + "|";
+		}
+		
+		return null;
+	}
+}//end class
