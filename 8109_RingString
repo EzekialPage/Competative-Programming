@@ -1,0 +1,32 @@
+//Ezekial Page
+//8109 Ring String
+//Incomplete
+
+package RingString;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int iterations = scan.nextInt();
+		//loop for specified number of test cases
+		for(int i = 0; i < iterations; i++) {
+			int numPics = scan.nextInt();
+			int startHeight =  scan.nextInt();
+			int width = scan.nextInt();
+			
+			for(int p = 0; p < numPics; p++) {
+				
+				
+			}
+			
+			
+			
+			
+			
+		}//end iterations
+		
+		scan.close();
+	}//end main
+}//end class
