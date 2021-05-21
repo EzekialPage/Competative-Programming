@@ -1,0 +1,46 @@
+//Ezeial Page
+//8106 No Duplicates
+//DONE
+
+package NoDuplicates;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int iterations = scan.nextInt();
+		scan.nextLine();
+		//loop for specified number of test cases
+		String inLine;
+		for(int i = 0; i < iterations; i++) {
+			inLine = scan.nextLine();
+			//System.out.println(inLine);
+			
+			String[] inSplit = inLine.split(" ");
+			
+			if(duplicate(inSplit)) {
+				System.out.println("no");
+			}else {
+				System.out.println("yes");
+			}
+		}//end iterations
+		
+	
+	}//end main
+	public static boolean duplicate(String [] s) {
+		for(int j = 0; j < s.length; j++) {
+			int count = -1;
+			for(int i = 0; i < s.length; i++) {
+				if(s[i].equalsIgnoreCase(s[j])) {
+					count++;
+					//System.out.println("word " + j + ": " + count);
+					if(count == 1) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+}//end class
