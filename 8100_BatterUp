@@ -1,0 +1,36 @@
+//Ezekial Page
+//8100 Batter up
+//DONE
+
+package BatterUp;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int iterations = scan.nextInt();
+		//loop for specified number of test cases
+		for(int i = 0; i < iterations; i++) {
+			int atBats = scan.nextInt();
+			int denominator = atBats;
+			int sum = 0;
+			int in;
+			double avg;
+			
+			//iterate through bats
+			for(int j = 0; j < atBats; j++) {
+				in = scan.nextInt();
+				if(in == -1) {
+					denominator--;
+				}else {
+					sum+=in;
+				}
+			}
+			avg = (double)(sum) / (double)(denominator);
+			System.out.println(avg);
+		}//end iterations
+		
+		
+	}//end main
+}//end class
