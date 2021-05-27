@@ -12,22 +12,56 @@ public class Main {
 		int iterations = scan.nextInt();
 		//loop for specified number of test cases
 		for(int i = 0; i < iterations; i++) {
+			double totalDist = 0;
+			double a;
+			double b;
+			double hyp;
 			int numPics = scan.nextInt();
 			int startHeight =  scan.nextInt();
 			int currentHeight = startHeight;
+			double currentDist = 0;
 			int roomWidth = scan.nextInt();
 			int [][] pictures = new int[4][6];
 			
 			//loop through picture dimensions and store in array
 			for(int p = 0; p < numPics; p++) {
-				for(int d = 0; d < pictures[0].length;d++) {
+				for(int d = 0; d < 4;d++) {
 					pictures[p][d] = scan.nextInt();
 				}
+				
+				//find optimal distance from current location to pass the current picture
 				int distToTop = Math.abs(currentHeight - pictures[p][2]);
 				int distToBot = Math.abs(currentHeight - pictures[p][3]);
-				if(false) {
-				} 
+				double targetHeight;
+				double targetDist;
+				double len;
+				if(distToTop < distToBot) {
+					targetHeight = pictures[p][3] + 0.5;
+					System.out.println("top");
+				}else {
+					targetHeight = pictures[p][2] - 0.5;
+					System.out.println("bot");
+				}
+				a = currentDist - (pictures[p][0] - 0.5);
+				b = currentHeight - targetHeight;
+				System.out.println("A: " + a + "\nB: " + b);
+				hyp = Math.sqrt((a * a) + (b * b));
+				totalDist += hyp;
+				currentDist = pictures[p][0] - 0.5;
+				currentHeight = pictures[p][0];
+				System.out.println("Add hyp of: " + hyp);
+				
+				
+				//pass picture
+				targetDist = pictures[p][1] + 0.5;
+				len = targetDist - currentDist;
+				totalDist += len;
+				currentDist += len;
+				System.out.println("Add len of " + len);
+				System.out.println("end of pic");
 			}
+			totalDist += roomWidth - currentDist;
+			System.out.println(totalDist);
 		}//end iterations
 		scan.close();
 	}//end main
