@@ -18,7 +18,7 @@ public class Main {
 			double hyp;
 			int numPics = scan.nextInt();
 			int startHeight =  scan.nextInt();
-			int currentHeight = startHeight;
+			double currentHeight = startHeight;
 			double currentDist = 0;
 			int roomWidth = scan.nextInt();
 			int [][] pictures = new int[4][6];
@@ -30,11 +30,12 @@ public class Main {
 				}
 				
 				//find optimal distance from current location to pass the current picture
-				int distToTop = Math.abs(currentHeight - pictures[p][2]);
-				int distToBot = Math.abs(currentHeight - pictures[p][3]);
+				double distToBot = Math.abs(currentHeight - pictures[p][2]);
+				double distToTop = Math.abs(currentHeight - pictures[p][3]);
 				double targetHeight;
 				double targetDist;
 				double len;
+				System.out.println("Dist Top:" + distToTop + "\nDist Bot: " + distToBot);
 				if(distToTop < distToBot) {
 					targetHeight = pictures[p][3] + 0.5;
 					System.out.println("top");
@@ -48,7 +49,7 @@ public class Main {
 				hyp = Math.sqrt((a * a) + (b * b));
 				totalDist += hyp;
 				currentDist = pictures[p][0] - 0.5;
-				currentHeight = pictures[p][0];
+				currentHeight = targetHeight;
 				System.out.println("Add hyp of: " + hyp);
 				
 				
