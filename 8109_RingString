@@ -35,22 +35,22 @@ public class Main {
 				double targetHeight;
 				double targetDist;
 				double len;
-				System.out.println("Dist Top:" + distToTop + "\nDist Bot: " + distToBot);
+				//System.out.println("Dist Top:" + distToTop + "\nDist Bot: " + distToBot);
 				if(distToTop < distToBot) {
 					targetHeight = pictures[p][3] + 0.5;
-					System.out.println("top");
+					//System.out.println("top");
 				}else {
 					targetHeight = pictures[p][2] - 0.5;
-					System.out.println("bot");
+					//System.out.println("bot");
 				}
 				a = currentDist - (pictures[p][0] - 0.5);
 				b = currentHeight - targetHeight;
-				System.out.println("A: " + a + "\nB: " + b);
+				//System.out.println("A: " + a + "\nB: " + b);
 				hyp = Math.sqrt((a * a) + (b * b));
 				totalDist += hyp;
 				currentDist = pictures[p][0] - 0.5;
 				currentHeight = targetHeight;
-				System.out.println("Add hyp of: " + hyp);
+				//System.out.println("Add hyp of: " + hyp);
 				
 				
 				//pass picture
@@ -58,11 +58,11 @@ public class Main {
 				len = targetDist - currentDist;
 				totalDist += len;
 				currentDist += len;
-				System.out.println("Add len of " + len);
-				System.out.println("end of pic");
+				//System.out.println("Add len of " + len);
+				//System.out.println("end of pic");
 			}
 			totalDist += roomWidth - currentDist;
-			System.out.println(totalDist);
+			//System.out.println(totalDist);
 		}//end iterations
 		scan.close();
 	}//end main
