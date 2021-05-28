@@ -1,0 +1,138 @@
+//Ezekial Page
+//8103 Honey Heist
+//Incomplete
+
+package HoneyHeist;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int iterations = scan.nextInt();
+		int hexEdgeLen = scan.nextInt();
+		int maxMoves = scan.nextInt();
+		int startPos = scan.nextInt();
+		int endPos = scan.nextInt();
+		int numWalls = scan.nextInt();
+		int wallArr[] = new int[numWalls];
+		for(int i = 0;i<numWalls;i++) {
+			wallArr[i] = scan.nextInt();
+		}
+		int arrSize;
+		if(hexEdgeLen != 1) {
+			arrSize = (hexEdgeLen * 2) - 1;
+		}else {
+			arrSize = 2;
+		}
+		int beehive[][] = new int[arrSize][arrSize];
+		
+		//create beehive layout
+		int direction = 1;
+		int count = 1;
+		int rowNum = 0;
+		int rowLen = 6;
+		int startIndex[] = new int[2];
+		int targetIndex[] = new int[2];
+		while(rowLen >= 6) {
+			for(int z = 0; z < rowLen;z++) {
+				if(!arrSearch(wallArr, count)) {
+					beehive[rowNum][z] = count;
+				}else {
+					beehive[rowNum][z] = -1;
+				}
+				if(count == startPos) {
+					startIndex[0] = rowNum;
+					startIndex[1] = z;
+					System.out.println("Start row: " + startIndex[0] + "\nStart col: " + startIndex[1]);
+				}
+				if(count == endPos) {
+					targetIndex[0] = rowNum;
+					targetIndex[1] = z;
+					System.out.println("Target row: " + targetIndex[0] + "\nTarget col: " + targetIndex[1]);
+				}
+				count++;
+			}
+			
+			if(rowLen == arrSize) {
+				direction = -1;
+			}
+			rowLen += direction;
+			rowNum++;
+		}
+		
+		for(int i=0;i<beehive.length;i++) {
+			for(int j = 0;j<beehive[i].length;j++) {
+				System.out.print(beehive[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		int numMoves = 0;
+		
+		boolean reached = false;
+		
+		if(reached) {
+			System.out.println(numMoves);
+		}else {
+			System.out.println("No");
+		}
+		
+		scan.close();
+	}//end main
+	
+	static boolean arrSearch(int [] arr, int x) {
+		boolean found = false;
+		for(int i = 0; i < arr.length;i++) {
+			if(arr[i] == x) {
+				found = true;
+			}
+		}
+		return found;
+	}
+	
+	//find minimal moves to reach destination
+	static int shortestPath(int arr[][], int start[], int target[]) {
+		int ret = 0;
+		int temp = 0;
+		int current []= start;
+		
+		return ret;
+	}
+	
+	
+	//movement methods to simplify pathing algorithm
+	static int[] upLeft(int [] current) {
+		int [] ret = current;
+		ret [0] = ret[0] - 1;
+		ret [1] = ret[1] - 1;
+		return ret;
+	}
+	static int[] upRight(int [] current) {
+		int [] ret = current;
+		ret [0] = ret[0] - 1;
+		ret [1] = ret[1] + 1;
+		return ret;
+	}
+	static int[] right(int [] current) {
+		int [] ret = current;
+		ret [1] = ret[1] + 1;
+		return ret;
+	}
+	static int[] downRight(int [] current) {
+		int [] ret = current;
+		ret [0] = ret[0] + 1;
+		ret [1] = ret[1] + 1;
+		return ret;
+	}
+	static int[] downLeft(int [] current) {
+		int [] ret = current;
+		ret [0] = ret[0] + 1;
+		return ret;
+	}
+	static int[] Left(int [] current) {
+		int [] ret = current;
+		ret [1] = ret[1] - 1;
+		return ret;
+	}
+}
