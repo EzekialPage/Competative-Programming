@@ -1,0 +1,57 @@
+//Ezekial Page
+//8107 Orderly Class
+//Done
+
+package OrderlyClass;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String args[]) {
+		Scanner scan = new Scanner(System.in);
+		int iterations = scan.nextInt();
+		
+		String a;
+		String b;
+		String reversed;
+		int solutions;
+		char temp[];
+		for(int i = 0; i < iterations; i++) {
+			a = scan.next();
+			b = scan.next();
+			temp = b.toCharArray();
+			solutions = 0;
+			
+			for(int j = 0; j < a.length(); j++) {
+				for(int k = j; k < a.length();k++) {
+					reversed = reverse(temp,j,k);
+					//System.out.println("J: " + j + "\t K: " + k);
+					//System.out.println(reversed);
+					if(reversed.equals(a))
+							solutions++;
+				}
+			}
+			System.out.println(solutions);
+		}
+		
+		
+	}
+	public static String reverse(char[]c, int start, int end) {
+		char []rev = new char [c.length];
+		for(int z = 0; z < c.length;z++) {
+			rev [z] = c[z];
+			//System.out.println(c[z]);
+		}
+		//char rev [] = c;
+		char temp1;
+		for(int i = 0; i < (Math.abs(start - end) + 1)/ 2; i++) {
+			temp1 = rev[start + i];
+			rev[start + i] = rev[end - i];
+			rev[end - i] = temp1;
+		}
+		String ret = "";
+		for(int x = 0;x<rev.length;x++) {
+			ret+= rev[x];
+		}
+		return ret;
+	}
+}
